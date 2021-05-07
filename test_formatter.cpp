@@ -28,7 +28,7 @@ struct formatter<std::error_code>
     FMT_CONSTEXPR auto format(const std::error_code& ec, FormatContext& ctx) const
       -> decltype(ctx.out())
     {
-        return format_to(ctx.out(), "{}:{}", ec.category().name(), ec.value());
+        return format_to(ctx.out(), FMT_COMPILE("{}:{}"), ec.category().name(), ec.value());
     }
 };
 

@@ -14,14 +14,14 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 6144 KiB (x1)
-Load Average: 1.79, 1.73, 1.69
+Load Average: 6.42, 4.27, 3.24
 -----------------------------------------------------------------
 Benchmark                       Time             CPU   Iterations
 -----------------------------------------------------------------
-FMTIostream/22                369 ns          368 ns      1953098
-FMTIostreamCompile/22         385 ns          384 ns      1863938
-FMTFormatter/22              75.9 ns         75.8 ns      9392947
-FMTFormatterCompile/22       79.6 ns         79.5 ns      8838830
+FMTIostream/22                353 ns          352 ns      2010610
+FMTIostreamCompile/22         355 ns          354 ns      1997141
+FMTFormatter/22              34.5 ns         34.5 ns     20479154
+FMTFormatterCompile/22       39.4 ns         39.4 ns     17737775
 ```
 
 
@@ -37,13 +37,13 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 6144 KiB (x1)
-Load Average: 1.68, 1.71, 1.69
+Load Average: 2.69, 3.35, 2.73
 -----------------------------------------------------------------
 Benchmark                       Time             CPU   Iterations
 -----------------------------------------------------------------
-FMTIostream/22                389 ns          388 ns      1854806
-FMTIostreamCompile/22         380 ns          378 ns      1794761
-FMTFormatter/22              33.7 ns         33.7 ns     20944226
-FMTFormatterCompile/22       16.4 ns         16.4 ns     42452029
+FMTIostream/22                352 ns          351 ns      1962676
+FMTIostreamCompile/22         335 ns          334 ns      2070700
+FMTFormatter/22              33.2 ns         33.1 ns     21445421
+FMTFormatterCompile/22       16.6 ns         16.5 ns     42194856
 ```
 

@@ -8,8 +8,8 @@
 
 namespace fmt {
 
-template <>
-struct formatter<std::error_code>
+template <typename Char>
+struct formatter<std::error_code, Char>
 {
     FMT_CONSTEXPR auto parse(format_parse_context& ctx) -> decltype(ctx.begin())
     {
@@ -24,12 +24,23 @@ struct formatter<std::error_code>
         return it;
     }
 
+#if 0
     template <typename FormatContext>
     FMT_CONSTEXPR auto format(const std::error_code& ec, FormatContext& ctx) const
       -> decltype(ctx.out())
     {
         return format_to(ctx.out(), FMT_COMPILE("{}:{}"), ec.category().name(), ec.value());
     }
+#else
+    template <typename FormatContext>
+    FMT_CONSTEXPR auto format(const std::error_code& ec, FormatContext& ctx) const -> decltype(ctx.out()) {
+        auto out = ctx.out();
+        out = detail::write<Char>(out, ec.category().name());
+        out = detail::write<Char>(out, Char(':'));
+        out = detail::write<Char>(out, ec.value());
+        return out;
+    }
+#endif
 };
 
 }  // namespace fmt

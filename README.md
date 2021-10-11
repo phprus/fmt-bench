@@ -68,12 +68,12 @@ Table:
 -------------------------------------------------------------------------------------------------------------------
 Benchmark                         OLD Time             CPU   Iterations   :   NEW Time             CPU   Iterations
 -------------------------------------------------------------------------------------------------------------------
-FMTFormatter_Y/22                  42.6 ns         42.6 ns     16415689   :    69.1 ns         68.9 ns      9940967
-FMTFormatterCompile_Y/22           55.3 ns         55.1 ns     12715033   :    84.6 ns         84.5 ns      8340635
-FMTFormatter_full/22                109 ns          109 ns      6401246   :     222 ns          222 ns      3146540
-FMTFormatterCompile_full/22         135 ns          135 ns      5189735   :     241 ns          240 ns      2914328
-FMTFormatter_full2/22              69.8 ns         69.4 ns     10202609   :     368 ns          366 ns      1912118
-FMTFormatterCompile_full2/22       84.3 ns         83.9 ns      8370654   :     372 ns          370 ns      1891532
+FMTFormatter_Y/22                  69.1 ns         68.9 ns      9940967   :    42.6 ns         42.6 ns     16415689
+FMTFormatterCompile_Y/22           84.6 ns         84.5 ns      8340635   :    55.3 ns         55.1 ns     12715033
+FMTFormatter_full/22                222 ns          222 ns      3146540   :     109 ns          109 ns      6401246
+FMTFormatterCompile_full/22         241 ns          240 ns      2914328   :     135 ns          135 ns      5189735
+FMTFormatter_full2/22               368 ns          366 ns      1912118   :    69.8 ns         69.4 ns     10202609
+FMTFormatterCompile_full2/22        372 ns          370 ns      1891532   :    84.3 ns         83.9 ns      8370654
 ```
 
 

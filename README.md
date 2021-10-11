@@ -3,8 +3,12 @@
 
 ## CMake command
 
+C++11:
 ```cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=11 ../..```
+
+C++17:
 ```cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 ../..```
+
 
 ## Run command
 

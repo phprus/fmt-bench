@@ -20,4 +20,12 @@ char* test_fmt_full2(char* buffer, const std::tm& tm);
 char* test_fmt_compile_full2(char* buffer, const std::tm& tm);
 
 
+// {:%a %b %d %T %Y}
+char* test_fmt_complex_1(char* buffer, const std::tm& tm);
+char* test_fmt_compile_complex_1(char* buffer, const std::tm& tm);
+
+// {:%a, %d %b %Y %T %z}
+char* test_fmt_complex_2(char* buffer, const std::tm& tm);
+char* test_fmt_compile_complex_2(char* buffer, const std::tm& tm);
+
 }  // namespace test_formatter

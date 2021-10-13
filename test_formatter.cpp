@@ -43,5 +43,26 @@ char* test_fmt_compile_full2(char* buffer, const std::tm& tm)
 }
 
 
+// {:%a %b %d %T %Y}
+char* test_fmt_complex_1(char* buffer, const std::tm& tm)
+{
+    return fmt::format_to(buffer, "{:%a %b %d %T %Y}", tm);
+}
+char* test_fmt_compile_complex_1(char* buffer, const std::tm& tm)
+{
+    return fmt::format_to(buffer, FMT_COMPILE("{:%a %b %d %T %Y}"), tm);
+}
+
+
+// {:%a, %d %b %Y %T %z}
+char* test_fmt_complex_2(char* buffer, const std::tm& tm)
+{
+    return fmt::format_to(buffer, "{:%a, %d %b %Y %T %z}", tm);
+}
+char* test_fmt_compile_complex_2(char* buffer, const std::tm& tm)
+{
+    return fmt::format_to(buffer, FMT_COMPILE("{:%a, %d %b %Y %T %z}"), tm);
+}
+
 
 }  // namespace test_formatter

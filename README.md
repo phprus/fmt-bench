@@ -135,3 +135,48 @@ FMTFormatterCompile_full/22         161 ns          161 ns      4366749   :    8
 FMTFormatter_full2/22               364 ns          364 ns      1930605   :    71.7 ns         71.7 ns      9756717
 FMTFormatterCompile_full2/22        322 ns          320 ns      2192324   :    23.9 ns         23.9 ns     29198270
 ```
+
+
+
+## MacbookPro
+
+
+macOS 10.14.6 Mojave
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+
+C++11:
+
+```
+----------------------------------------------------------:---------------------
+Benchmark                          OLD Time         CPU   :  NEW Time        CPU
+----------------------------------------------------------:---------------------
+FMTFormatter_Y                       425 ns      425 ns   :   45.4 ns    45.4 ns    // {:%Y}
+FMTFormatterCompile_Y                426 ns      426 ns   :   59.3 ns    59.2 ns    // {:%Y}
+FMTFormatter_full                    898 ns      898 ns   :    138 ns     138 ns    // {:%Y-%m-%d %H:%M:%S}
+FMTFormatterCompile_full             903 ns      903 ns   :    167 ns     167 ns    // {:%Y-%m-%d %H:%M:%S}
+FMTFormatter_full2                   927 ns      926 ns   :   68.6 ns    68.5 ns    // {:%F %T}
+FMTFormatterCompile_full2            946 ns      946 ns   :   85.5 ns    85.5 ns    // {:%F %T}
+FMTFormatter_complex_1               833 ns      832 ns   :    547 ns     547 ns    // {:%a %b %d %T %Y}
+FMTFormatterCompile_complex_1        841 ns      840 ns   :    565 ns     565 ns    // {:%a %b %d %T %Y}
+FMTFormatter_complex_2               983 ns      982 ns   :    862 ns     862 ns    // {:%a, %d %b %Y %T %z}
+FMTFormatterCompile_complex_2       1001 ns     1001 ns   :    856 ns     856 ns    // {:%a, %d %b %Y %T %z}
+```
+
+
+C++17:
+```
+--------------------------------------------------------:-----------------------
+Benchmark                          OLD Time       CPU   :   NEW Time        CPU
+--------------------------------------------------------:-----------------------
+FMTFormatter_Y                       440 ns    439 ns   :     46.1 ns    46.1 ns    // {:%Y}
+FMTFormatterCompile_Y                389 ns    389 ns   :     14.3 ns    14.2 ns    // {:%Y}
+FMTFormatter_full                    918 ns    916 ns   :      138 ns     138 ns    // {:%Y-%m-%d %H:%M:%S}
+FMTFormatterCompile_full             868 ns    867 ns   :     85.8 ns    85.8 ns    // {:%Y-%m-%d %H:%M:%S}
+FMTFormatter_full2                   936 ns    935 ns   :     65.9 ns    65.9 ns    // {:%F %T}
+FMTFormatterCompile_full2            890 ns    889 ns   :     26.2 ns    26.2 ns    // {:%F %T}
+FMTFormatter_complex_1               848 ns    847 ns   :      556 ns     556 ns    // {:%a %b %d %T %Y}
+FMTFormatterCompile_complex_1        772 ns    771 ns   :      482 ns     481 ns    // {:%a %b %d %T %Y}
+FMTFormatter_complex_2               993 ns    993 ns   :      963 ns     943 ns    // {:%a, %d %b %Y %T %z}
+FMTFormatterCompile_complex_2        926 ns    925 ns   :      801 ns     795 ns    // {:%a, %d %b %Y %T %z}
+```
+

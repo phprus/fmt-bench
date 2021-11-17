@@ -1,5 +1,5 @@
 [submodule "fmt.git"]
 	path = fmt
 	url = git@github.com:phprus/fmt.git
-	branch = optimize-tm-formatting-3
+	branch = optimize-tm-formatting-5
 

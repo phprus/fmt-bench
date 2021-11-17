@@ -12,6 +12,17 @@
 
 namespace test_formatter {
 
+
+// {:%z}
+char* test_fmt_z(char* buffer, const std::tm& tm)
+{
+    return fmt::format_to(buffer, "{:%z}", tm);
+}
+char* test_fmt_compile_z(char* buffer, const std::tm& tm)
+{
+    return fmt::format_to(buffer, FMT_COMPILE("{:%z}"), tm);
+}
+
 // {:%Y}
 char* test_fmt_Y(char* buffer, const std::tm& tm)
 {

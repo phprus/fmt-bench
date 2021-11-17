@@ -13,6 +13,35 @@ std::tm current()
 const std::tm current_tm = current();
 
 // --------
+static void FMTFormatter_z(benchmark::State& state) {
+  char buffer[max_buffer_size];
+
+  std::time_t time = std::time(nullptr);
+  std::tm tm = *localtime(&time);
+
+  for (auto _ : state) {
+    benchmark::DoNotOptimize(
+        test_formatter::test_fmt_z(buffer, current_tm));
+  }
+}
+BENCHMARK(FMTFormatter_z);
+
+static void FMTFormatterCompile_z(benchmark::State& state) {
+  char buffer[max_buffer_size];
+
+  std::time_t time = std::time(nullptr);
+  std::tm tm = *localtime(&time);
+
+  for (auto _ : state) {
+    benchmark::DoNotOptimize(
+        test_formatter::test_fmt_compile_z(buffer, current_tm));
+  }
+}
+BENCHMARK(FMTFormatterCompile_z);
+// --------
+
+/*
+// --------
 static void FMTFormatter_Y(benchmark::State& state) {
   char buffer[max_buffer_size];
 
@@ -147,5 +176,6 @@ static void FMTFormatterCompile_complex_2(benchmark::State& state) {
 }
 BENCHMARK(FMTFormatterCompile_complex_2);
 // --------
+*/
 
 BENCHMARK_MAIN();

@@ -7,6 +7,10 @@ constexpr std::size_t max_buffer_size = 2048;
 
 namespace test_formatter {
 
+// {:%z}
+char* test_fmt_z(char* buffer, const std::tm& tm);
+char* test_fmt_compile_z(char* buffer, const std::tm& tm);
+
 // {:%Y}
 char* test_fmt_Y(char* buffer, const std::tm& tm);
 char* test_fmt_compile_Y(char* buffer, const std::tm& tm);

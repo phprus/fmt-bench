@@ -39,8 +39,6 @@ static void FMTFormatterCompile_z(benchmark::State& state) {
 }
 BENCHMARK(FMTFormatterCompile_z);
 // --------
-
-/*
 // --------
 static void FMTFormatter_Y(benchmark::State& state) {
   char buffer[max_buffer_size];
@@ -68,6 +66,7 @@ static void FMTFormatterCompile_Y(benchmark::State& state) {
 }
 BENCHMARK(FMTFormatterCompile_Y);
 // --------
+/*
 // --------
 static void FMTFormatter_full(benchmark::State& state) {
   char buffer[max_buffer_size];

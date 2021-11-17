@@ -26,11 +26,11 @@ char* test_fmt_compile_z(char* buffer, const std::tm& tm)
 // {:%Y}
 char* test_fmt_Y(char* buffer, const std::tm& tm)
 {
-    return fmt::format_to(buffer, "{:%Y}", tm);
+    return fmt::format_to(buffer, "{:%EY}", tm);
 }
 char* test_fmt_compile_Y(char* buffer, const std::tm& tm)
 {
-    return fmt::format_to(buffer, FMT_COMPILE("{:%Y}"), tm);
+    return fmt::format_to(buffer, FMT_COMPILE("{:%EY}"), tm);
 }
 
 // {:%Y-%m-%d %H:%M:%S}

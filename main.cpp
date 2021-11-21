@@ -38,6 +38,31 @@ static void FMTFormatterCompile_z(benchmark::State& state) {
   }
 }
 BENCHMARK(FMTFormatterCompile_z);
+static void FMTFormatter_z_strftime(benchmark::State& state) {
+  char buffer[max_buffer_size];
+
+  std::time_t time = std::time(nullptr);
+  std::tm tm = *localtime(&time);
+
+  for (auto _ : state) {
+    benchmark::DoNotOptimize(
+        test_formatter::test_fmt_z_strftime(buffer, current_tm));
+  }
+}
+BENCHMARK(FMTFormatter_z_strftime);
+static void FMTFormatter_z_time_put(benchmark::State& state) {
+  char buffer[max_buffer_size];
+
+  std::time_t time = std::time(nullptr);
+  std::tm tm = *localtime(&time);
+  std::locale loc = std::locale::classic();
+
+  for (auto _ : state) {
+    benchmark::DoNotOptimize(
+        test_formatter::test_fmt_z_time_put(buffer, current_tm, loc));
+  }
+}
+BENCHMARK(FMTFormatter_z_time_put);
 // --------
 // --------
 static void FMTFormatter_Y(benchmark::State& state) {
@@ -65,10 +90,7 @@ static void FMTFormatterCompile_Y(benchmark::State& state) {
   }
 }
 BENCHMARK(FMTFormatterCompile_Y);
-// --------
-/*
-// --------
-static void FMTFormatter_full(benchmark::State& state) {
+static void FMTFormatter_Y_strftime(benchmark::State& state) {
   char buffer[max_buffer_size];
 
   std::time_t time = std::time(nullptr);
@@ -76,105 +98,23 @@ static void FMTFormatter_full(benchmark::State& state) {
 
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_full(buffer, current_tm));
+        test_formatter::test_fmt_Y_strftime(buffer, current_tm));
   }
 }
-BENCHMARK(FMTFormatter_full);
-
-static void FMTFormatterCompile_full(benchmark::State& state) {
+BENCHMARK(FMTFormatter_Y_strftime);
+static void FMTFormatter_Y_time_put(benchmark::State& state) {
   char buffer[max_buffer_size];
 
   std::time_t time = std::time(nullptr);
   std::tm tm = *localtime(&time);
+  std::locale loc = std::locale::classic();
 
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_full(buffer, current_tm));
+        test_formatter::test_fmt_Y_time_put(buffer, current_tm, loc));
   }
 }
-BENCHMARK(FMTFormatterCompile_full);
+BENCHMARK(FMTFormatter_Y_time_put);
 // --------
-// --------
-static void FMTFormatter_full2(benchmark::State& state) {
-  char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_full2(buffer, current_tm));
-  }
-}
-BENCHMARK(FMTFormatter_full2);
-
-static void FMTFormatterCompile_full2(benchmark::State& state) {
-  char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_full2(buffer, current_tm));
-  }
-}
-BENCHMARK(FMTFormatterCompile_full2);
-// --------
-// --------
-static void FMTFormatter_complex_1(benchmark::State& state) {
-  char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_complex_1(buffer, current_tm));
-  }
-}
-BENCHMARK(FMTFormatter_complex_1);
-
-static void FMTFormatterCompile_complex_1(benchmark::State& state) {
-  char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_complex_1(buffer, current_tm));
-  }
-}
-BENCHMARK(FMTFormatterCompile_complex_1);
-// --------
-// --------
-static void FMTFormatter_complex_2(benchmark::State& state) {
-  char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_complex_2(buffer, current_tm));
-  }
-}
-BENCHMARK(FMTFormatter_complex_2);
-
-static void FMTFormatterCompile_complex_2(benchmark::State& state) {
-  char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_complex_2(buffer, current_tm));
-  }
-}
-BENCHMARK(FMTFormatterCompile_complex_2);
-// --------
-*/
 
 BENCHMARK_MAIN();

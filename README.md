@@ -113,3 +113,47 @@ FMTFormatter_Y_time_put        591 ns          590 ns      1182392
 ```
 
 
+## Visual Studio 2017
+
+
+C++17:
+```
+2021-11-22T00:37:43+05:00
+Running fmt_test_old
+Run on (2 X 2494 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x2)
+  L1 Instruction 32 KiB (x2)
+  L2 Unified 4096 KiB (x2)
+  L3 Unified 16384 KiB (x1)
+------------------------------------------------------------------
+Benchmark                        Time             CPU   Iterations
+------------------------------------------------------------------
+FMTFormatter_z                1384 ns         1360 ns       448000
+FMTFormatterCompile_z         1321 ns         1318 ns       497778
+FMTFormatter_z_strftime        312 ns          314 ns      2240000
+FMTFormatter_z_time_put       1217 ns         1221 ns       640000
+FMTFormatter_Y                1385 ns         1381 ns       497778
+FMTFormatterCompile_Y         1300 ns         1311 ns       560000
+FMTFormatter_Y_strftime        301 ns          300 ns      2240000
+FMTFormatter_Y_time_put       1214 ns         1221 ns       640000
+2021-11-22T00:37:50+05:00
+Running fmt_test_new
+Run on (2 X 2494 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x2)
+  L1 Instruction 32 KiB (x2)
+  L2 Unified 4096 KiB (x2)
+  L3 Unified 16384 KiB (x1)
+------------------------------------------------------------------
+Benchmark                        Time             CPU   Iterations
+------------------------------------------------------------------
+FMTFormatter_z                 123 ns          123 ns      5600000
+FMTFormatterCompile_z         71.1 ns         69.8 ns      8960000
+FMTFormatter_z_strftime        312 ns          314 ns      2240000
+FMTFormatter_z_time_put       1214 ns         1221 ns       640000
+FMTFormatter_Y                 121 ns          120 ns      5600000
+FMTFormatterCompile_Y         67.9 ns         68.4 ns     11200000
+FMTFormatter_Y_strftime        303 ns          305 ns      2357895
+FMTFormatter_Y_time_put       1203 ns         1200 ns       560000
+```

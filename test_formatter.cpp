@@ -1,4 +1,5 @@
 #include <ctime>
+#include <sstream>
 
 #include "test_functions.hpp"
 
@@ -15,55 +16,27 @@
 namespace test_formatter {
 
 
-// {:%z}
-char* test_fmt_z(char* buffer, const std::tm& tm)
+// {:%Z}
+char* test_fmt_Z(char* buffer, const std::tm& tm)
 {
-    return fmt::format_to(buffer, "{:%z}", tm);
+    return fmt::format_to(buffer, "{:%Z}", tm);
 }
-char* test_fmt_compile_z(char* buffer, const std::tm& tm)
+char* test_fmt_compile_Z(char* buffer, const std::tm& tm)
 {
-    return fmt::format_to(buffer, FMT_COMPILE("{:%z}"), tm);
+    return fmt::format_to(buffer, FMT_COMPILE("{:%Z}"), tm);
 }
-char* test_fmt_z_strftime(char* buffer, const std::tm& tm)
+char* test_fmt_Z_strftime(char* buffer, const std::tm& tm)
 {
-    strftime(buffer, max_buffer_size, "%z", &tm);
+    strftime(buffer, max_buffer_size, "%Z", &tm);
     return buffer;
 }
-char* test_fmt_z_time_put(char* buffer, const std::tm& tm, const std::locale& loc)
+char* test_fmt_Z_time_put(char* buffer, const std::tm& tm, const std::locale& loc)
 {
     auto&& os = std::basic_ostringstream<char>();
     os.imbue(loc);
     using iterator = std::ostreambuf_iterator<char>;
     const auto& facet = std::use_facet<std::time_put<char, iterator>>(loc);
-    auto end = facet.put(os, os, ' ', &tm, 'z', 0);
-
-    const auto &s = os.str();
-    std::memcpy(buffer, s.c_str(), s.size() + 1);
-
-    return buffer;
-}
-
-// {:%EY}
-char* test_fmt_Y(char* buffer, const std::tm& tm)
-{
-    return fmt::format_to(buffer, "{:%EY}", tm);
-}
-char* test_fmt_compile_Y(char* buffer, const std::tm& tm)
-{
-    return fmt::format_to(buffer, FMT_COMPILE("{:%EY}"), tm);
-}
-char* test_fmt_Y_strftime(char* buffer, const std::tm& tm)
-{
-    strftime(buffer, max_buffer_size, "%EY", &tm);
-    return buffer;
-}
-char* test_fmt_Y_time_put(char* buffer, const std::tm& tm, const std::locale& loc)
-{
-    auto&& os = std::basic_ostringstream<char>();
-    os.imbue(loc);
-    using iterator = std::ostreambuf_iterator<char>;
-    const auto& facet = std::use_facet<std::time_put<char, iterator>>(loc);
-    auto end = facet.put(os, os, ' ', &tm, 'Y', 'E');
+    auto end = facet.put(os, os, ' ', &tm, 'Z', 0);
 
     const auto &s = os.str();
     std::memcpy(buffer, s.c_str(), s.size() + 1);

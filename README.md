@@ -20,12 +20,13 @@ C++17:
 
 
 macOS 10.14.6 Mojave
+
 Apple clang version 11.0.0 (clang-1100.0.33.17)
 
 C++11:
 
 ```
-2021-11-26T22:43:04+05:00
+2021-11-27T15:35:33+05:00
 Running ./fmt_test_old
 Run on (8 X 2700 MHz CPU s)
 CPU Caches:
@@ -33,15 +34,15 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 6144 KiB (x1)
-Load Average: 1.96, 1.90, 2.12
+Load Average: 1.18, 1.23, 1.53
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 454 ns          454 ns      1586161
-FMTFormatterCompile_Z          458 ns          458 ns      1573932
-FMTFormatter_Z_strftime        157 ns          156 ns      4310531
-FMTFormatter_Z_time_put        347 ns          347 ns      2008366
-2021-11-26T22:43:09+05:00
+FMTFormatter_Z                 456 ns          456 ns      1495413
+FMTFormatterCompile_Z          473 ns          473 ns      1577539
+FMTFormatter_Z_strftime        159 ns          159 ns      4478681
+FMTFormatter_Z_time_put        352 ns          352 ns      1920376
+2021-11-27T15:35:37+05:00
 Running ./fmt_test_new
 Run on (8 X 2700 MHz CPU s)
 CPU Caches:
@@ -49,20 +50,20 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 6144 KiB (x1)
-Load Average: 1.96, 1.90, 2.12
+Load Average: 1.17, 1.23, 1.53
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 401 ns          400 ns      1764491
-FMTFormatterCompile_Z          426 ns          426 ns      1661749
-FMTFormatter_Z_strftime        160 ns          160 ns      4402599
-FMTFormatter_Z_time_put        339 ns          339 ns      2036974
+FMTFormatter_Z                74.5 ns         74.5 ns      9298742
+FMTFormatterCompile_Z         89.1 ns         89.0 ns      7798140
+FMTFormatter_Z_strftime        161 ns          161 ns      4398173
+FMTFormatter_Z_time_put        339 ns          339 ns      2002810
 ```
 
 
 C++17:
 ```
-2021-11-26T22:43:16+05:00
+2021-11-27T15:35:52+05:00
 Running ./fmt_test_old
 Run on (8 X 2700 MHz CPU s)
 CPU Caches:
@@ -70,15 +71,15 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 6144 KiB (x1)
-Load Average: 1.89, 1.89, 2.12
+Load Average: 1.20, 1.23, 1.53
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 469 ns          468 ns      1465343
-FMTFormatterCompile_Z          413 ns          412 ns      1754047
-FMTFormatter_Z_strftime        165 ns          165 ns      4187279
-FMTFormatter_Z_time_put        365 ns          364 ns      1934038
-2021-11-26T22:43:20+05:00
+FMTFormatter_Z                 442 ns          442 ns      1617129
+FMTFormatterCompile_Z          368 ns          367 ns      1804021
+FMTFormatter_Z_strftime        164 ns          163 ns      4105572
+FMTFormatter_Z_time_put        359 ns          359 ns      2011911
+2021-11-27T15:35:56+05:00
 Running ./fmt_test_new
 Run on (8 X 2700 MHz CPU s)
 CPU Caches:
@@ -86,14 +87,14 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 6144 KiB (x1)
-Load Average: 1.89, 1.89, 2.12
+Load Average: 1.34, 1.26, 1.53
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 405 ns          405 ns      1716742
-FMTFormatterCompile_Z          373 ns          373 ns      1865428
-FMTFormatter_Z_strftime        158 ns          158 ns      4296429
-FMTFormatter_Z_time_put        343 ns          343 ns      2014719
+FMTFormatter_Z                77.2 ns         77.1 ns      8776219
+FMTFormatterCompile_Z         40.1 ns         40.1 ns     17403151
+FMTFormatter_Z_strftime        164 ns          164 ns      4439483
+FMTFormatter_Z_time_put        358 ns          357 ns      2056863
 ```
 
 
@@ -139,11 +140,12 @@ FMTFormatter_Z_time_put       1286 ns         1283 ns       560000
 
 
 openSUSE 15.2
+
 gcc version 7.5.0 (SUSE Linux)
 
 C++11:
 ```
-2021-11-26T23:39:34+05:00
+2021-11-27T17:49:10+05:00
 Running ./fmt_test_old
 Run on (8 X 3800 MHz CPU s)
 CPU Caches:
@@ -151,16 +153,16 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 8192 KiB (x1)
-Load Average: 0.07, 0.03, 0.00
+Load Average: 0.22, 0.07, 0.02
 ***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 599 ns          599 ns      1156092
-FMTFormatterCompile_Z          607 ns          607 ns      1152875
-FMTFormatter_Z_strftime       19.6 ns         19.6 ns     35651997
-FMTFormatter_Z_time_put        540 ns          540 ns      1301585
-2021-11-26T23:39:37+05:00
+FMTFormatter_Z                 565 ns          565 ns      1160276
+FMTFormatterCompile_Z          572 ns          572 ns      1208755
+FMTFormatter_Z_strftime       19.5 ns         19.5 ns     35837217
+FMTFormatter_Z_time_put        503 ns          503 ns      1000000
+2021-11-27T17:49:13+05:00
 Running ./fmt_test_new
 Run on (8 X 3800 MHz CPU s)
 CPU Caches:
@@ -168,20 +170,20 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 8192 KiB (x1)
-Load Average: 0.07, 0.03, 0.00
+Load Average: 0.28, 0.09, 0.03
 ***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 474 ns          474 ns      1476641
-FMTFormatterCompile_Z          482 ns          482 ns      1452504
-FMTFormatter_Z_strftime       19.5 ns         19.5 ns     35854726
-FMTFormatter_Z_time_put        497 ns          497 ns      1406291
+FMTFormatter_Z                57.8 ns         57.8 ns     11960459
+FMTFormatterCompile_Z         70.6 ns         70.6 ns      9889568
+FMTFormatter_Z_strftime       19.5 ns         19.5 ns     35892061
+FMTFormatter_Z_time_put        493 ns          493 ns      1422078
 ```
 
 C++17:
 ```
-2021-11-26T23:39:44+05:00
+2021-11-27T17:48:45+05:00
 Running ./fmt_test_old
 Run on (8 X 3800 MHz CPU s)
 CPU Caches:
@@ -189,16 +191,16 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 8192 KiB (x1)
-Load Average: 0.14, 0.04, 0.01
+Load Average: 0.15, 0.04, 0.01
 ***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 635 ns          635 ns      1095353
-FMTFormatterCompile_Z          596 ns          596 ns      1175556
-FMTFormatter_Z_strftime       19.6 ns         19.6 ns     35792170
-FMTFormatter_Z_time_put        581 ns          581 ns      1206007
-2021-11-26T23:39:47+05:00
+FMTFormatter_Z                 555 ns          555 ns      1254966
+FMTFormatterCompile_Z          522 ns          521 ns      1343753
+FMTFormatter_Z_strftime       19.5 ns         19.5 ns     35766526
+FMTFormatter_Z_time_put        487 ns          487 ns      1439912
+2021-11-27T17:48:49+05:00
 Running ./fmt_test_new
 Run on (8 X 3800 MHz CPU s)
 CPU Caches:
@@ -206,14 +208,14 @@ CPU Caches:
   L1 Instruction 32 KiB (x4)
   L2 Unified 256 KiB (x4)
   L3 Unified 8192 KiB (x1)
-Load Average: 0.14, 0.04, 0.01
+Load Average: 0.22, 0.06, 0.02
 ***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
 ------------------------------------------------------------------
 Benchmark                        Time             CPU   Iterations
 ------------------------------------------------------------------
-FMTFormatter_Z                 388 ns          388 ns      1814902
-FMTFormatterCompile_Z          345 ns          345 ns      2030729
-FMTFormatter_Z_strftime       19.5 ns         19.5 ns     35782731
-FMTFormatter_Z_time_put        486 ns          486 ns      1432844
+FMTFormatter_Z                58.1 ns         58.1 ns     11936567
+FMTFormatterCompile_Z         29.6 ns         29.6 ns     23666551
+FMTFormatter_Z_strftime       19.6 ns         19.6 ns     35794721
+FMTFormatter_Z_time_put        531 ns          531 ns      1316827
 ```
 

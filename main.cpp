@@ -4,65 +4,65 @@
 #include "test_functions.hpp"
 
 // --------
-std::tm current()
+#if __cplusplus >= 201703L
+
+std::filesystem::path get_current_path()
 {
-    std::time_t time = std::time(nullptr);
-    std::tm tm = *localtime(&time);
-    return tm;
+    return std::filesystem::absolute(std::filesystem::path("."));
 }
-const std::tm current_tm = current();
+const std::filesystem::path current_path = get_current_path();
+
+#endif
+
+date get_current_date()
+{
+  return date(2022, 02, 20);
+}
+const date current_date = get_current_date();
 
 // --------
-static void FMTFormatter_Z(benchmark::State& state) {
+#if __cplusplus >= 201703L
+
+static void FMTFormatter_path(benchmark::State& state) {
   char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_Z(buffer, current_tm));
+        test_formatter::test_fmt_path(buffer, current_path));
   }
 }
-BENCHMARK(FMTFormatter_Z);
+BENCHMARK(FMTFormatter_path);
 
-static void FMTFormatterCompile_Z(benchmark::State& state) {
+static void FMTFormatterCompile_path(benchmark::State& state) {
   char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_Z(buffer, current_tm));
+        test_formatter::test_fmt_compile_path(buffer, current_path));
   }
 }
-BENCHMARK(FMTFormatterCompile_Z);
-static void FMTFormatter_Z_strftime(benchmark::State& state) {
+BENCHMARK(FMTFormatterCompile_path);
+
+#endif
+// --------
+
+static void FMTFormatter_date(benchmark::State& state) {
   char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_Z_strftime(buffer, current_tm));
+        test_formatter::test_fmt_date(buffer, current_date));
   }
 }
-BENCHMARK(FMTFormatter_Z_strftime);
-static void FMTFormatter_Z_time_put(benchmark::State& state) {
+BENCHMARK(FMTFormatter_date);
+
+static void FMTFormatterCompile_date(benchmark::State& state) {
   char buffer[max_buffer_size];
-
-  std::time_t time = std::time(nullptr);
-  std::tm tm = *localtime(&time);
-  std::locale loc = std::locale::classic();
-
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_Z_time_put(buffer, current_tm, loc));
+        test_formatter::test_fmt_compile_date(buffer, current_date));
   }
 }
-BENCHMARK(FMTFormatter_Z_time_put);
+BENCHMARK(FMTFormatterCompile_date);
+
+
 // --------
 
 BENCHMARK_MAIN();

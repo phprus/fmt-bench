@@ -7,41 +7,45 @@
 #include "fmt/format.h"
 
 #ifdef FMT_OLD
-    #include "fmt/chrono_old.h"
+    #include "fmt/ostream_old.h"
 #else
-    #include "fmt/chrono.h"
+    #include "fmt/ostream.h"
 #endif
 
 
+std::ostream& operator<<(std::ostream& os, const date& d) {
+  os << d.year() << '-' << d.month() << '-' << d.day();
+  return os;
+}
+
+namespace fmt {
+template <> struct formatter<date> : ostream_formatter {};
+#if __cplusplus >= 201703L
+template <> struct formatter<std::filesystem::path> : ostream_formatter {};
+#endif
+}
+
 namespace test_formatter {
 
+#if __cplusplus >= 201703L
+char* test_fmt_path(char* buffer, const std::filesystem::path& p)
+{
+    return fmt::format_to(buffer, "{}", p);
+}
+char* test_fmt_compile_path(char* buffer, const std::filesystem::path& p)
+{
+    return fmt::format_to(buffer, FMT_COMPILE("{}"), p);
+}
+#endif
 
-// {:%Z}
-char* test_fmt_Z(char* buffer, const std::tm& tm)
+char* test_fmt_date(char* buffer, const date& d)
 {
-    return fmt::format_to(buffer, "{:%Z}", tm);
+    return fmt::format_to(buffer, "{}", d);
 }
-char* test_fmt_compile_Z(char* buffer, const std::tm& tm)
+char* test_fmt_compile_date(char* buffer, const date& d)
 {
-    return fmt::format_to(buffer, FMT_COMPILE("{:%Z}"), tm);
+    return fmt::format_to(buffer, FMT_COMPILE("{}"), d);
 }
-char* test_fmt_Z_strftime(char* buffer, const std::tm& tm)
-{
-    strftime(buffer, max_buffer_size, "%Z", &tm);
-    return buffer;
-}
-char* test_fmt_Z_time_put(char* buffer, const std::tm& tm, const std::locale& loc)
-{
-    auto&& os = std::basic_ostringstream<char>();
-    os.imbue(loc);
-    using iterator = std::ostreambuf_iterator<char>;
-    const auto& facet = std::use_facet<std::time_put<char, iterator>>(loc);
-    auto end = facet.put(os, os, ' ', &tm, 'Z', 0);
 
-    const auto &s = os.str();
-    std::memcpy(buffer, s.c_str(), s.size() + 1);
-
-    return buffer;
-}
 
 }  // namespace test_formatter

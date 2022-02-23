@@ -61,8 +61,31 @@ static void FMTFormatterCompile_date(benchmark::State& state) {
   }
 }
 BENCHMARK(FMTFormatterCompile_date);
+// --------
 
 
+
+// --------
+
+const test_string ts("test");
+
+static void FMTFormatter_complex_format(benchmark::State& state) {
+  char buffer[max_buffer_size];
+  for (auto _ : state) {
+    benchmark::DoNotOptimize(
+        test_formatter::test_fmt_complex_format(buffer, ts));
+  }
+}
+BENCHMARK(FMTFormatter_complex_format);
+
+static void FMTFormatterCompile_complex_format(benchmark::State& state) {
+  char buffer[max_buffer_size];
+  for (auto _ : state) {
+    benchmark::DoNotOptimize(
+        test_formatter::test_fmt_compile_complex_format(buffer, ts));
+  }
+}
+BENCHMARK(FMTFormatterCompile_complex_format);
 // --------
 
 BENCHMARK_MAIN();

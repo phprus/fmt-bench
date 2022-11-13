@@ -4,88 +4,49 @@
 #include "test_functions.hpp"
 
 // --------
-#if __cplusplus >= 201703L
 
-std::filesystem::path get_current_path()
-{
-    return std::filesystem::absolute(std::filesystem::path("."));
-}
-const std::filesystem::path current_path = get_current_path();
-
-#endif
-
-date get_current_date()
-{
-  return date(2022, 02, 20);
-}
-const date current_date = get_current_date();
+double d1 = -42.0;
+double d2 = 16.0;
 
 // --------
-#if __cplusplus >= 201703L
-
-static void FMTFormatter_path(benchmark::State& state) {
+static void FMTFormatter_double1(benchmark::State& state) {
   char buffer[max_buffer_size];
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_path(buffer, current_path));
+        test_formatter::test_fmt(buffer, d1));
   }
 }
-BENCHMARK(FMTFormatter_path);
+BENCHMARK(FMTFormatter_double1);
 
-static void FMTFormatterCompile_path(benchmark::State& state) {
+static void FMTFormatterCompile_double1(benchmark::State& state) {
   char buffer[max_buffer_size];
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_path(buffer, current_path));
+        test_formatter::test_fmt_compile(buffer, d1));
   }
 }
-BENCHMARK(FMTFormatterCompile_path);
-
-#endif
+BENCHMARK(FMTFormatterCompile_double1);
 // --------
 
-static void FMTFormatter_date(benchmark::State& state) {
+// --------
+static void FMTFormatter_double2(benchmark::State& state) {
   char buffer[max_buffer_size];
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_date(buffer, current_date));
+        test_formatter::test_fmt(buffer, d2));
   }
 }
-BENCHMARK(FMTFormatter_date);
+BENCHMARK(FMTFormatter_double2);
 
-static void FMTFormatterCompile_date(benchmark::State& state) {
+static void FMTFormatterCompile_double2(benchmark::State& state) {
   char buffer[max_buffer_size];
   for (auto _ : state) {
     benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_date(buffer, current_date));
+        test_formatter::test_fmt_compile(buffer, d2));
   }
 }
-BENCHMARK(FMTFormatterCompile_date);
+BENCHMARK(FMTFormatterCompile_double2);
 // --------
 
-
-
-// --------
-
-const test_string ts("test");
-
-static void FMTFormatter_complex_format(benchmark::State& state) {
-  char buffer[max_buffer_size];
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_complex_format(buffer, ts));
-  }
-}
-BENCHMARK(FMTFormatter_complex_format);
-
-static void FMTFormatterCompile_complex_format(benchmark::State& state) {
-  char buffer[max_buffer_size];
-  for (auto _ : state) {
-    benchmark::DoNotOptimize(
-        test_formatter::test_fmt_compile_complex_format(buffer, ts));
-  }
-}
-BENCHMARK(FMTFormatterCompile_complex_format);
-// --------
 
 BENCHMARK_MAIN();
